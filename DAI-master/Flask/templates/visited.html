@@ -1,0 +1,17 @@
+ {% extends "layout.html" %}
+ 
+{% block content %}
+<div class="col-sm-9 center-block">
+	<h3> Last visited links. </h3>
+	{% for k in session['VISIT'] %}
+		<h3> {{k}} </h3>
+	{% endfor %}
+</div>
+{% endblock %}
+
+{% block menu %}
+	{% for i in contenido.menu %}
+		<button type="button" class="btn btn-success col-sm-12" onclick="location.href='{{i.link}}'" > {{ i.text }}</></button>
+		</br>
+	{% endfor %}
+{% endblock %}

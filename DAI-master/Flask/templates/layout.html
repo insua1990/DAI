@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>PR3 DAI</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+	
+	
+	<body class="container" style="background-color:black">
+		<div class="container" style="background-color:black">
+		  <header >
+			<div class="col-sm-12" style="background-color:black">
+				</br>
+				<div class="col-sm-12">
+					<div class="col-sm-3 col-sm-12">
+						<img src=../static/{{contenido.logo}} width="200" height="200"> </img>
+					</div>
+					<div class="col-sm-9 col-sm-12">
+						<div class="col-sm-9 col-sm-12 text-center" >
+							<h1 > {{contenido.header}} </h1>
+						</div>
+						<div class="col-sm-3 col-sm-12">
+							{% if session['USER'] %}
+								<div class = "col-sm-12" >
+									<label style="margin-bottom:10%"> WELCOME {{session['USER']}} </label>
+									<button type="submit" class="btn btn-danger" onclick="location.href='/logout'">LOGOUT</button>
+								</div>
+							{% else %}
+								<form class = "col-sm-12 form-signin" action="/login" method="post" name="Login_Form" >
+									<div class="form-group col-sm-12">
+							
+										<input type="text" class="form-control" name= "login" id="login" placeholder="LOGIN">
+									</div>
+									<div class="form-group col-sm-12">
+						
+										<input type="password" class="form-control" name = "pass" id="pass" placeholder="PASSWORD">
+										</br>
+										<button type="submit" class="btn btn-success">SIGN IN</button>
+									</div>
+								</form>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>	
+		  </header>
+		  
+		<div class = "col-sm-12" style="background-color:black" >
+			</br></br>
+			<div class="col-sm-3 col-sm-12">
+			  <div class="btn-group-vertical col-sm-12">
+				{% block menu %}{% endblock %}
+			  </div>
+			</div>
+		  
+			<div class="col-sm-9 col-sm-12">
+			  {% block content %}{% endblock %}
+			</div>
+		</div >
+
+		  
+		<blockquote class="blockquote-reverse">
+		  <p>Jose Manuel Martinez de la Insua </p>
+		  <footer>DAI 2016/2017 <cite title="Source Title">ETSIIT UGR</cite></footer>
+		</blockquote>
+		
+	   </div>
+	</body>
+	
+	
+</html>

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+	
+{% block header%}	
+{% endblock %}
+
+{% block menu %}
+	{% for i in contenido.menu %}
+		<button type="button" class="btn btn-success col-sm-12" onclick="location.href='{{i.link}}'" > {{ i.text }}</></button>
+		</br>
+	{% endfor %}
+{% endblock %}
+
+{% block content %}
+  
+{% endblock %}		
+		
+
+

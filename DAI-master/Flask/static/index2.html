@@ -1,0 +1,86 @@
+ <!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>PR2 DAI</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script>
+			function loadurl() {
+				location.href="http://localhost:8080/user/" + document.getElementById("usuario").value;
+			}
+		</script>
+	
+	</head>
+
+	<body class="container text-center" style="background-color:black">
+		<div class="container" style="background-color:black">
+			<header >
+				<h1> PRACTICA 2: <small> Micro Framework Web para Python: "Flask"</small></h1>	
+			</header>
+			
+			<div class="col-sm-12">
+				<div class="col-sm-4 col-sm-12">
+					<h3> URLs </h3>
+					<button style="margin:5%" type="button" class="btn btn-info col-sm-12" onclick="location.href='http://localhost:8080/user/pepe'" > PEPE </button>
+				
+					<button style="margin:5%" type="button" class="btn btn-info col-sm-12" onclick="location.href='http://localhost:8080/user/zerjillo'" > ZERJILLO </button>
+					
+					<label>INTRODUCE NOMBRE USUARIO: </label>
+					<input type="text" id="usuario">
+					
+					<button style="margin:5%" class="btn btn-success col-sm-12" type="button" onclick="loadurl()">CARGAR USUARIO</button>
+					
+				</div>
+				<div class="col-sm-4 col-sm-12">
+					<h3> Mandelbrot </h3>
+					<form class = "col-sm-12 form-signin" action="http://localhost:8080/mandelbrot" method="post" name="Mandelbrot">
+					
+						<div class="form-group col-sm-12">
+							<label>X1:</label>
+							<input type=text class="form-control" name="x1" >
+						</div>
+						<div class="form-group col-sm-12">
+							<label>Y1:</label>
+							<input type=text name="y1" class="form-control">
+						</div>
+						<div class="form-group col-sm-12">
+							<label>X2:</label>
+							<input type=text name="x2" class="form-control">
+						</div>
+						<div class="form-group col-sm-12">
+							<label>Y2:</label>
+							<input type=text name="y2" class="form-control">
+						</div>
+						<div class="form-group col-sm-12">
+							<label>Anchura</label>
+							<input type=text name="witdh" class="form-control">
+							</br>
+							<button type="submit" class="btn btn-success"> GENERAR </button>
+						</div>
+					</form>
+				</div>	
+				<div class="col-sm-4 col-sm-12">
+					<h3> SVG </h3>
+					</br>
+					<button type="button" class="btn btn-info col-sm-12" onclick="location.href='http://localhost:8080/svg'" > GENERAR ALEATORIO </button>
+				</div>	
+			</div>	
+			
+			<div class="clear-fix"></div>
+			</br>
+			
+		</div>
+		<blockquote class="blockquote-reverse">
+			<p>Jose Manuel Martinez de la Insua </p>
+			<footer>DAI 2016/2017 <cite title="Source Title">ETSIIT UGR</cite></footer>
+		</blockquote>
+	</body>
+	
+
+</html>
