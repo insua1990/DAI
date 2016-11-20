@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Restaurantes</title>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<style>
+			.helvetica{   
+				font-family: Helvetica;  
+			}  
+			.segoe{   
+				font-family:Segoe;  
+			}  
+			.candara{   
+				font-family:Candara;  
+			}  
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#letra").change(function() {
+					var valor = $(this).val()
+					$('body').removeClass();
+					$('body').addClass('container');
+					$('body').addClass(valor);
+				});
+				$('[data-toggle="popover"]').popover();
+				$("#mostrarfiltros").click(function(){
+				  if( $('#mostrarfiltros').prop('checked') ) {
+						$("#filtros").fadeIn(2000);
+						$('#filtros').css({display: "block"});
+				  }else{
+					    $('#filtros').css({display: "none"});
+				  }
+			   });
+				
+			});
+		</script>
+	</head>
+	
+	
+	<body class="container" id="cuerpo">
+		<header >
+			<h1 class="text-center"> WEB RESTAURANTES <h1>
+		</header>
+		
+		
+		
+		<div class= "col-sm-12">
+			<label class="checkbox-inline">
+			  <input type="checkbox" name="mostrarfiltros" value="1" id="mostrarfiltros"> Mostrar filtros</input>
+			  </br></br>
+			</label>
+			
+			<div class= "col-sm-12" id="filtros" style="display:none">
+				{% block filtro %}{% endblock %}
+			</div>
+			
+			{% block content %}{% endblock %}
+			
+			</br></br>
+		</div>
+		<div class= "col-sm-12">
+			</br>
+			<blockquote class="blockquote-reverse">
+					<a style="text-decoration:none;color:black;" href="#" data-toggle="popover" data-placement="top" data-trigger="hover" title="Prácticas 4 y 5:" data-content= "
+							- Bootstrap                                                                           
+							- MongoDB
+							- JQuery
+							- Ajax" >
+						Jose Manuel Martínez de la Insua 
+					</a>
+				</label>
+				<footer> DAI 2016/2017 <cite title="Source Title">ETSIIT UGR</cite></footer>
+			</blockquote>
+		</div>
+	</body>
+</html>

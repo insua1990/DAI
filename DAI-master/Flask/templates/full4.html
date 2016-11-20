@@ -1,0 +1,92 @@
+{% extends "index4.html" %}
+
+
+{% block filtro %}
+	<form class = "col-sm-5 col-sm-12 form-inline" >
+		<div class = "form-group " >
+			<label for="letra"> Tipo de letra:  </label> 
+			<select class="form-control " id='letra' name='letra'>
+				  <option class = "cambiarletra" value = 'helvetica' >Helvetica</option>
+				  <option class = "cambiarletra" value = 'segoe'>Segoe</option>
+				  <option class = "cambiarletra" value = 'candara'>Candara</option>
+			</select>
+			</br>
+		</div>
+	</form>
+	
+	</br></br>
+	<form class = "col-sm-10 col-sm-12 form-inline" action="/filtrado" method="post" name="Filtro_Form" >
+			<label  for="filtro"> Filtrar:  </label> 
+			<select class="form-control" id='campo' name='campo'>
+			  <option value = 'borough' >Barrio</option>
+			  <option value = 'cuisine'>Cocina</option>
+			  <option value = 'name'>Nombre</option>
+			</select>
+			<input type="text" class="form-control " id="filtro" name = "filtro" placeholder="Escribe una palabra...">
+			<input type="submit" class="form-control btn btn-info " id="filtrar" value = "Filtrar" > </input>
+	</form>
+	
+	</br></br></br>
+{% endblock %}	
+
+
+{% block content %}
+</br>
+<div class = "col-sm-12" >
+		<button onclick="location.href='./add_rest'" class="btn btn-success btn-block"> Agregar Nuevo Restaurante </button>
+</div>
+</br>
+<div class="col-sm-12" style="overflow:auto; max-height:300px; height:300px;">
+	<table class="table table-hover" >
+		<thead>
+			<th> ID </th>
+			<th> Nombre </th>
+			<th> Barrio </th>
+			<th> Dirección </th>
+			<th> Cocina </th>
+			<th> Puntuación </th>
+			<th> Acciones </th>
+		</thead>
+		<tbody >
+			{% for i in contenido.cursor %}
+				<tr>
+					<td> 
+							{{i.restaurant_id}}
+					</td>
+					<td> 
+							{{i.name}}
+					</td>
+					<td> 
+							{{i.borough}}
+					</td>
+					<td> 
+							{{i.address.building }} , {{i.address.street}}
+					</td>
+					<td> 
+							{{i.cuisine}}
+					</td>
+					<td> 
+						{% for j in i.grades %}
+							{{j.score }} 
+						{% endfor %}
+					</td>
+					<td >
+						<form action="/delete" method="post" name="Delete_Form" >
+								<input type="hidden" name="but" value= {{i.restaurant_id}} ></input>
+								<button  type="submit" class="btn btn-danger glyphicon glyphicon-trash"></button>
+						</form>
+						<form action="/edit_restaurant" method="post" name="Edit_Form" >
+								<input type="hidden" name="but1" value= {{i.restaurant_id}} ></input>
+								<button  type="submit" class="btn btn-warning glyphicon glyphicon-wrench"></button>
+						</form>
+
+					</td>
+				</tr>
+
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+	
+{% endblock %}		

@@ -1,0 +1,36 @@
+{% extends "index4.html" %}
+
+{% block filtro %}
+	
+{% endblock %}	
+
+{% block content %}
+	<div class="col-sm-12" style="overflow:auto; max-height:450px; height:400px;" >
+		<form class = "col-sm-12 form-signin " action="/add" method="post" name="Add_Form">
+
+			<div class="col-sm-6">
+				<div class="form-group col-sm-12">
+					<label for="nomb">Dirección:</label></br></br>
+					<input type="text" class="form-control" name="barrio" placeholder="Barrio"></br>
+					<input type="text" class="form-control" name="calle" placeholder="Calle"></br>
+					<input type="number" step="1" min="0" class="form-control" name="codigopostal" placeholder="Cod. Postal"></br>
+					<input type="number" step="1" min="0" class="form-control" name="edificio" placeholder="Edificio"></br>
+					<input type="number" step="0.0000001" class="form-control" name="latitud" placeholder="Latitud"></br>
+					<input type="number" step="0.0000001" class="form-control" name="longitud" placeholder="Longitud"></br>
+				</div>		
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group col-sm-12">
+					<label for="cocina">A cerca del restaurante:</label></br></br>
+					<input type="text" class="form-control" name="cocina" placeholder='Tipo de cocina'></br>
+					<input type="number" step="1" min="0" class="form-control" name="id" placeholder='Id. restaurante'></br>
+					<input type="text" class="form-control" name="nombre" placeholder='Nombre restaurante'></br>
+				</div>
+				<div class="form-group col-sm-12">
+					</br>
+					<button type="submit" class="btn btn-success">AGREGAR </button>
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}	

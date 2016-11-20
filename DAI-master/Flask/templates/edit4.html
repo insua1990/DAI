@@ -1,0 +1,43 @@
+{% extends "index4.html" %}
+
+{% block filtro %}
+	
+{% endblock %}	
+
+{% block content %}
+	<div class="col-sm-12" style="overflow:auto; max-height:450px; height:400px;" >
+		<form class = "col-sm-12 form-signin " action="/editar" method="post" name="Signup_Form">
+			{% for i in contenido.cursor %}
+			<div class="col-sm-6">
+				<div class="form-group col-sm-12">
+					<label for="nomb">NOMBRE:</label>
+					<input type="text" class="form-control" name="nomb" value='{{i.name}}'>
+					<input type="hidden" name="aux" value='{{i.restaurant_id}}'>
+				</div>
+				<div class="form-group col-sm-12">
+					<label for="barrio">BARRIO:</label>
+					<input type="text" class="form-control" name="barrio" value='{{i.borough}}'>
+				</div>
+				<div class="form-group col-sm-12">
+					<label for="edificio">EDIFICIO:</label>
+					<input type="text" class="form-control" name="edificio" value='{{i.address.building}}'>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group col-sm-12">
+					<label for="calle">CALLE:</label>
+					<input type="text" class="form-control" name="calle" value='{{i.address.street}}'>
+				</div>
+				<div class="form-group col-sm-12">
+					<label for="cocina">COCINA:</label>
+					<input type="text" class="form-control" name="cocina" value='{{i.cuisine}}'>
+				</div>
+				<div class="form-group col-sm-12">
+					</br>
+					<button type="submit" class="btn btn-success">EDITAR</button>
+				</div>
+			</div>
+			{% endfor %}
+		</form>
+	</div>
+{% endblock %}	
