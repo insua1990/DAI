@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
-from flask import Flask,request, url_for,render_template,redirect
+from flask import Flask,request, url_for,render_template,redirect,session
 from pymongo import MongoClient
 from datetime import datetime
 
@@ -8,13 +8,17 @@ app = Flask(__name__)
 app.secret_key = 'F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
 
 mongoClient = MongoClient('localhost',27017)
+
+
 @app.route("/")
 def web_incial():
 	db = mongoClient.test
 	collection = db.restaurants
-	cursor = collection.find()
-	datos = {"cursor":cursor}
+	result = collection.find({'name':{'$regex':'^' + 'A'}})
+	datos = {"cursor":result}
 	return render_template('full4.html',contenido=datos)
+
+	
 
 @app.route("/delete",methods = ['POST'])
 def borrar_restaurante():
@@ -60,6 +64,24 @@ def filtrar():
 	datos = {"cursor":result}
 	return render_template('full4.html',contenido = datos)
 
+@app.route("/paginar",methods = ['POST'])
+def paginar():
+	campo = str(request.form['dat'])
+	session['pag'] = campo
+	db = mongoClient.test
+	collection = db.restaurants
+	result = collection.find({'name':{'$regex':'^' + campo}})
+	datos = {"cursor":result}
+	return render_template('full4.html',contenido = datos)	
+	
+@app.route("/paginada")
+def paginada():
+	db = mongoClient.test
+	collection = db.restaurants
+	result = collection.find({'name':{'$regex':'^' + session['pag']}})
+	datos = {"cursor":result}
+	return render_template('full4.html',contenido=datos)
+	
 @app.route("/add_rest")
 def formulario_ingresar_restaurante():
 	datos = {}

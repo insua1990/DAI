@@ -39,8 +39,24 @@
 					    $('#filtros').css({display: "none"});
 				  }
 			   });
-				
+				$('.botpag').click(function() {
+					var dat = jQuery(this).attr('data-value');
+					$.ajax({
+						url: '/paginar',
+						data: {'dat':dat},
+						type: 'POST',
+						success: function(response) {
+							document.location.href='/paginada';
+						},
+						error: function(error) {
+							alert("Imposible paginar.");
+						}
+					});
+				});
 			});
+			
+				
+
 		</script>
 	</head>
 	
@@ -54,7 +70,7 @@
 		
 		<div class= "col-sm-12">
 			<label class="checkbox-inline">
-			  <input type="checkbox" name="mostrarfiltros" value="1" id="mostrarfiltros"> Mostrar filtros</input>
+			  <input type="checkbox" name="mostrarfiltros" value="0" id="mostrarfiltros"> Mostrar filtros</input>
 			  </br></br>
 			</label>
 			
